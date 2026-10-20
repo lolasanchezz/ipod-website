@@ -1,0 +1,13 @@
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dancer {
+  font-family: var(--font-geist-mono), monospace;
+  /* fit the 128 x 60 character grid inside the viewport */
+  font-size: min(1.25vw, 1.6vh);
+  line-height: 1;
+}
