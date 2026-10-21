@@ -12,9 +12,16 @@ export default function AsciiDancer({ className }: { className?: string }) {
   const [frame, setFrame] = useState(0);
 
   useEffect(() => {
+    const offset = Math.floor(
+      Number(new URLSearchParams(window.location.search).get("offset")) || 0,
+    );
     fetch("/ascii-frames.json")
       .then((res) => res.json())
-      .then(setAnimation);
+      .then((data: AsciiAnimation) => {
+        const count = data.frames.length;
+        setFrame(((offset % count) + count) % count);
+        setAnimation(data);
+      });
   }, []);
 
   useEffect(() => {
